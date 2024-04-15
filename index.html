@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <div class="mainheader">Weather</div>
+    <div class="weatherbox">
+        <div class="inputform">
+            <input type="text" id="city-input" class="citysearch" placeholder="Enter City">
+            <button onclick="searchCity()" class="btncity">Search</button>
+            <div id="weather-output" class="weatheroutput">
+                <div class="weathercard">
+                    <div class="weathercardheader">
+                        <h4 id="city-name" class="cardnature">-&nbsp;-&nbsp;-&nbsp;-</h4>
+                    </div>
+                    <div class="weathercardbody">
+                        <h1 id="weather-type" class="cardtitle">----</h1>
+                        <div class="weather-temp">
+                            <div class="tempbox">Temp: <span id="temp" class="tempa">--</span>°F</div>
+                            <div class="tempbox">Min Temp: <span id="min-temp" class="tempa">--</span>°F</div>
+                            <div class="tempbox">Max Temp: <span id="max-temp" class="tempa">--</span>°F</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
