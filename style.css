@@ -6,10 +6,12 @@ body {
     padding: 0;
     background-image: url('/assets/cloudy-weather-landscape-background.jpeg');
     background-size: cover;
-    background-position: center;
+    background-position: top;
+    background-repeat: no-repeat;
 }
 
 .inputform {
+    /* color: white; */
     width: 100vw;
     display: flex;
     justify-content: center;
@@ -18,13 +20,13 @@ body {
     gap: 20px;
 }
 .inputform ::placeholder{
-    color: rgb(47, 47, 47);
+    color: white;
 }
 
 .citysearch {
     border: none;
     outline: none;
-    border-bottom: 3px solid blue;
+    border-bottom: 3px solid white;
     text-align: center;
     font-size: 20px;
     padding: 10px;
@@ -37,7 +39,7 @@ body {
     color: white;
     font-size: 15px;
     border: 2px solid white;
-    background: rgb(67, 67, 202);
+    background: blue;
     font-weight: bold;
     cursor: pointer;
     font-family: 'Roboto', sans-serif;
@@ -51,7 +53,7 @@ body {
     justify-content: center;
     align-items: center;
     margin: 40px 0px;
-    color: darkblue;
+    color: whitesmoke;
     font-weight: bold;
 }
 
