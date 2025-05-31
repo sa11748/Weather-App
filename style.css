@@ -1,10 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
 
+/* 🌱 Base Styles */
 body {
     margin: 0;
     padding: 0;
-    background-image: url('/assets/cloudy-weather-landscape-background.jpeg');
+    background: url(/assets/main\ light\ bg.png);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -13,9 +14,61 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    transition: background 0.5s ease;
+    font-family: 'Roboto', sans-serif;
+    color: #4e342e;
 }
 
-/* 🔹 Input Form */
+/* 🌑 Dark Mode (Earth at Dusk) */
+body.dark-mode {
+    background: url(/assets/darkmode.jpg);
+    color: #f5f0e1;
+}
+
+body.dark-mode .mainheader,
+body.dark-mode .citysearch,
+body.dark-mode .weathercardbody,
+body.dark-mode .tempbox,
+body.dark-mode .cardtitle,
+body.dark-mode .cardnature {
+    color: #f5f0e1;
+}
+
+body.dark-mode .weathercardbody {
+    background-color: grey;
+    border-color: #a1887f;
+}
+
+body.dark-mode .citysearch {
+    border-bottom: 3px solid #a1887f;
+}
+
+body.dark-mode .citysearch::placeholder {
+    color: #d7ccc8;
+}
+
+body.dark-mode .btncity {
+    background: grey;
+    border-color: white;
+    color: #f5f0e1;
+}
+
+body.dark-mode .btncity:hover {
+    background: #4e342e;
+}
+
+body.dark-mode .forecast-card {
+    background: grey;
+    border-color: #a1887f;
+    color: white;
+}
+
+body.dark-mode .error-message {
+    background: rgba(198, 40, 40, 0.2);
+    color: #ffcdd2;
+}
+
+/* 🧺 Input Form */
 .inputform {
     width: 90vw;
     max-width: 500px;
@@ -30,49 +83,80 @@ body {
     max-width: 400px;
     border: none;
     outline: none;
-    border-bottom: 3px solid white;
+    border-bottom: 3px solid #6d4c41;
     text-align: center;
     font-size: 20px;
     padding: 8px;
     background: transparent;
-    color: black;
+    color: #4e342e;
+    transition: border-color 0.3s ease;
 }
 
 .citysearch::placeholder {
-    color: grey;
+    color: #8d6e63;
 }
 
 .btncity {
     padding: 10px 20px;
     border-radius: 5px;
-    color: white;
+    color: #4e342e;
     font-size: 16px;
-    border: 2px solid white;
-    background: blue;
+    border: 2px solid #6d4c41;
+    background: #d7ccc8;
     font-weight: bold;
     cursor: pointer;
     font-family: 'Roboto', sans-serif;
-    transition: 0.3s ease;
+    transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .btncity:hover {
-    background: darkblue;
+    background: #bcaaa4;
+    transform: scale(1.05);
 }
 
-/* 🔹 Header */
+.theme-toggle {
+    padding: 8px 15px;
+    border-radius: 5px;
+    color: #4e342e;
+    font-size: 14px;
+    border: 2px solid #6d4c41;
+    background: #d7ccc8;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.theme-toggle:hover {
+    background: #a1887f;
+    color: white;
+}
+
+/* 🍂 Header */
 .mainheader {
     font-family: 'Caveat', cursive;
     font-size: 50px;
     text-align: center;
     margin: 30px 0;
-    color: black;
+    color: #4e342e;
     font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
 }
 
-/* 🔹 Weather Output */
+/* 🌾 Weather Output */
 .weatheroutput {
     width: 90vw;
     max-width: 400px;
+    animation: fadeIn 0.5s ease-in;
+}
+
+.weathercard {
+    transition: transform 0.3s ease;
+}
+
+.weathercard:hover {
+    transform: scale(1.02);
 }
 
 .weathercardheader {
@@ -88,11 +172,18 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 3px solid rgb(67, 67, 202);
-    padding: 10px;
+    border: 3px solid #a1887f;
+    padding: 20px;
     margin-top: 10px;
     border-radius: 10px;
-    background-color: rgb(218, 218, 232);
+    background-color: rgba(215, 204, 200, 0.9);
+    transition: background-color 0.3s ease;
+}
+
+.weather-icon {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 10px;
 }
 
 .tempbox {
@@ -103,42 +194,88 @@ body {
 
 .tempa {
     padding: 10px;
+    font-weight: bold;
 }
 
-/* 🔹 Loader */
+/* 🍃 Forecast */
+.forecast {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.forecast-card {
+    background: rgba(215, 204, 200, 0.9);
+    border: 2px solid #a1887f;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    flex: 1;
+    min-width: 100px;
+}
+
+.forecast-card img {
+    width: 50px;
+    height: 50px;
+}
+
+/* 🌰 Loader */
 .loader {
-    border: 4px solid #f3f3f3;
+    border: 4px solid #f5f0e1;
     border-radius: 50%;
-    border-top: 4px solid #3498db;
+    border-top: 4px solid #a1887f;
     width: 40px;
     height: 40px;
-    animation: spin 2s linear infinite;
+    animation: spin 1s linear infinite;
 }
 
+/* 🍂 Animations */
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
 
-/* 🔹 Error Message */
-.error-message {
-    color: red;
-    font-size: 16px;
-    text-align: center;
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
-/* 📱 Mobile View (Up to 600px) */
+/* 🚫 Error Message */
+.error-message {
+    color: #c62828;
+    font-size: 16px;
+    text-align: center;
+    background: rgba(198, 40, 40, 0.1);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* 📊 Chart */
+#temp-chart {
+    max-height: 200px;
+    margin: 20px auto;
+    width: 100%;
+}
+
+body.dark-mode canvas {
+    background: rgba(93, 64, 55, 0.3);
+    border-radius: 8px;
+}
+
+/* 📱 Responsive Design */
 @media screen and (max-width: 600px) {
     .mainheader {
         font-size: 40px;
     }
-    
+
     .citysearch {
         font-size: 16px;
         padding: 6px;
     }
 
-    .btncity {
+    .btncity, .theme-toggle {
         font-size: 14px;
         padding: 8px 15px;
     }
@@ -154,9 +291,13 @@ body {
     .tempbox {
         font-size: 16px;
     }
+
+    .forecast {
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
-/* 💻 Tablet View (601px - 1024px) */
 @media screen and (min-width: 601px) and (max-width: 1024px) {
     .mainheader {
         font-size: 45px;
@@ -179,7 +320,6 @@ body {
     }
 }
 
-/* 🖥️ Large Screens (1025px and above) */
 @media screen and (min-width: 1025px) {
     .mainheader {
         font-size: 55px;

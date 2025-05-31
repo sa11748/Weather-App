@@ -1,38 +1,44 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>Weather App</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Added for temperature chart -->
 </head>
-
 <body>
-    <div class="mainheader">Weather</div>
+    <div class="mainheader">
+        Weather
+        <button id="theme-toggle" class="theme-toggle">Toggle Dark Mode</button>
+    </div>
     <div class="weatherbox">
         <div class="inputform">
             <input type="text" id="city-input" class="citysearch" placeholder="Enter City">
             <button onclick="searchCity()" class="btncity">Search</button>
+            <button id="geo-btn" class="btncity">Use My Location</button>
             <div id="loader" class="loader" style="display:none;"></div>
             <div id="error-message" class="error-message" style="display:none;">City not found. Please try again.</div>
             <div id="weather-output" class="weatheroutput" style="display:none;">
                 <div class="weathercard">
                     <div class="weathercardheader">
-                        <h4 id="city-name" class="cardnature">-&nbsp;-&nbsp;-&nbsp;-</h4>
+                        <h4 id="city-name" class="cardnature">- - - -</h4>
                     </div>
                     <div class="weathercardbody">
+                        <img id="weather-icon" class="weather-icon" src="" alt="Weather Icon" style="display:none;">
                         <h1 id="weather-type" class="cardtitle">----</h1>
                         <div class="weather-temp">
-                            <div class="tempbox">Temp: <span id="temp" class="tempa">--</span>°C</div>
-                            <div class="tempbox">Min Temp: <span id="min-temp" class="tempa">--</span>°C</div>
-                            <div class="tempbox">Max Temp: <span id="max-temp" class="tempa">--</span>°C</div>
+                            <div class="tempbox">Temp: <span id="temp" class="tempa">--</span><span id="unit">°C</span></div>
+                            <div class="tempbox">Min Temp: <span id="min-temp" class="tempa">--</span><span id="unit-min">°C</span></div>
+                            <div class="tempbox">Max Temp: <span id="max-temp" class="tempa">--</span><span id="unit-max">°C</span></div>
                         </div>
+                        <button id="unit-toggle" class="btncity">Switch to °F</button>
+                        <canvas id="temp-chart" style="margin-top: 20px;"></canvas>
                     </div>
                 </div>
+                <div id="forecast" class="forecast"></div>
             </div>
         </div>
     </div>
+    <script src="script.js"></script>
 </body>
-
 </html>
