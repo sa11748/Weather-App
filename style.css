@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap');
 
 /* 🌱 Base Styles */
 body {
@@ -9,19 +9,24 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    height: 100vh;
+    background-attachment: fixed;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    transition: background 0.5s ease;
     font-family: 'Roboto', sans-serif;
     color: #4e342e;
+    transition: background 0.5s ease, color 0.3s ease;
+    box-sizing: border-box;
 }
 
-/* 🌑 Dark Mode (Earth at Dusk) */
+/* 🌑 Dark Mode */
 body.dark-mode {
     background: url(/assets/darkmode.jpg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     color: #f5f0e1;
 }
 
@@ -35,120 +40,139 @@ body.dark-mode .cardnature {
 }
 
 body.dark-mode .weathercardbody {
-    background-color: grey;
-    border-color: #a1887f;
+    background: rgba(80, 80, 80, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); /* For Safari compatibility */
 }
 
 body.dark-mode .citysearch {
-    border-bottom: 3px solid #a1887f;
-}
-
-body.dark-mode .citysearch::placeholder {
-    color: #d7ccc8;
-}
-
-body.dark-mode .btncity {
-    background: grey;
-    border-color: white;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
     color: #f5f0e1;
 }
 
-body.dark-mode .btncity:hover {
-    background: #4e342e;
+body.dark-mode .citysearch::placeholder {
+    color: rgba(245, 240, 225, 0.7);
+}
+
+body.dark-mode .btncity,
+body.dark-mode .theme-toggle {
+    background: rgba(80, 80, 80, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #f5f0e1;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+body.dark-mode .btncity:hover,
+body.dark-mode .theme-toggle:hover {
+    background: rgba(78, 52, 46, 0.5);
+    border-color: #f5f0e1;
 }
 
 body.dark-mode .forecast-card {
-    background: grey;
-    border-color: #a1887f;
-    color: white;
+    background: rgba(80, 80, 80, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #f5f0e1;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 body.dark-mode .error-message {
-    background: rgba(198, 40, 40, 0.2);
+    background: rgba(198, 40, 40, 0.3);
     color: #ffcdd2;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
 }
 
 /* 🧺 Input Form */
 .inputform {
-    width: 90vw;
-    max-width: 500px;
+    width: 100%;
+    max-width: 600px;
     display: flex;
-    flex-direction: column;
+    flex-direction : column;
     align-items: center;
-    gap: 15px;
+    /* justify-content: center; */
+    gap: 1rem;
+    padding: 1rem;
+    box-sizing: border-box;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    border: 1px solid rgba(109, 76, 65, 0.3);
+    backdrop-filter: blur(50px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: background 0.3s ease;
 }
 
 .citysearch {
-    width: 80%;
-    max-width: 400px;
+    width: 100%;
+    max-width: 500px;
     border: none;
     outline: none;
-    border-bottom: 3px solid #6d4c41;
+    border-bottom: 2px solid rgba(109, 76, 65, 0.5);
     text-align: center;
-    font-size: 20px;
-    padding: 8px;
+    font-size: clamp(20px, 4vw, 24px);
+    padding: 0.75rem;
     background: transparent;
     color: #4e342e;
     transition: border-color 0.3s ease;
 }
 
 .citysearch::placeholder {
-    color: #8d6e63;
+    color: rgba(141, 110, 99, 0.7);
 }
 
-.btncity {
-    padding: 10px 20px;
-    border-radius: 5px;
+.btncity, .theme-toggle {
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px; /* Rounded buttons for modern look */
     color: #4e342e;
-    font-size: 16px;
-    border: 2px solid #6d4c41;
-    background: #d7ccc8;
-    font-weight: bold;
+    font-size: clamp(14px, 3.5vw, 16px);
+    border: 1px solid rgba(109, 76, 65, 0.5);
+    background: rgba(215, 204, 200, 0.2);
+    font-weight: 400;
     cursor: pointer;
     font-family: 'Roboto', sans-serif;
-    transition: background 0.3s ease, transform 0.2s ease;
+    transition: background 0.3s ease, transform 0.2s ease, border-color 0.3s ease;
+    touch-action: manipulation;
+    min-width: 120px;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
 }
 
-.btncity:hover {
-    background: #bcaaa4;
-    transform: scale(1.05);
-}
-
-.theme-toggle {
-    padding: 8px 15px;
-    border-radius: 5px;
-    color: #4e342e;
-    font-size: 14px;
-    border: 2px solid #6d4c41;
-    background: #d7ccc8;
-    cursor: pointer;
-    transition: background 0.3s ease;
+.btncity:hover, .theme-toggle:hover {
+    background: rgba(188, 170, 164, 0.4);
+    border-color: #6d4c41;
+    transform: translateY(-2px);
 }
 
 .theme-toggle:hover {
-    background: #a1887f;
-    color: white;
+    background: rgba(161, 136, 127, 0.4);
+    color: #4e342e;
 }
 
 /* 🍂 Header */
 .mainheader {
     font-family: 'Caveat', cursive;
-    font-size: 50px;
+    font-size: clamp(32px, 8vw, 50px);
     text-align: center;
-    margin: 30px 0;
+    margin: 2rem 0;
     color: #4e342e;
     font-weight: bold;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 20px;
+    gap: 1rem;
+    padding: 0 1rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Subtle shadow for readability */
 }
 
 /* 🌾 Weather Output */
 .weatheroutput {
-    width: 90vw;
-    max-width: 400px;
+    width: 100%;
+    max-width: 600px;
     animation: fadeIn 0.5s ease-in;
+    padding: 1rem;
+    box-sizing: border-box;
 }
 
 .weathercard {
@@ -163,8 +187,11 @@ body.dark-mode .error-message {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 24px;
+    font-size: clamp(20px, 5vw, 24px);
     height: 50px;
+    font-weight: 400;
+    color: #4e342e;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .weathercardbody {
@@ -172,53 +199,60 @@ body.dark-mode .error-message {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 3px solid #a1887f;
-    padding: 20px;
-    margin-top: 10px;
-    border-radius: 10px;
-    background-color: rgba(215, 204, 200, 0.9);
-    transition: background-color 0.3s ease;
+    border: 1px solid rgba(161, 136, 127, 0.3);
+    padding: 1.5rem;
+    margin-top: 0.5rem;
+    border-radius: 15px;
+    background: rgba(215, 204, 200, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: background 0.3s ease;
 }
 
 .weather-icon {
-    width: 80px;
-    height: 80px;
-    margin-bottom: 10px;
+    width: clamp(60px, 15vw, 80px);
+    height: clamp(60px, 15vw, 80px);
+    margin-bottom: 0.5rem;
 }
 
 .tempbox {
     text-align: center;
-    font-size: 18px;
-    margin: 10px;
+    font-size: clamp(16px, 4vw, 18px);
+    margin: 0.5rem;
+    color: #4e342e;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .tempa {
-    padding: 10px;
-    font-weight: bold;
+    padding: 0.5rem;
+    font-weight: 400;
 }
 
 /* 🍃 Forecast */
 .forecast {
     display: flex;
-    justify-content: space-between;
-    gap: 10px;
-    margin-top: 20px;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
     flex-wrap: wrap;
 }
 
 .forecast-card {
-    background: rgba(215, 204, 200, 0.9);
-    border: 2px solid #a1887f;
+    background: rgba(215, 204, 200, 0.1);
+    border: 1px solid rgba(161, 136, 127, 0.3);
     border-radius: 8px;
-    padding: 10px;
+    padding: 0.75rem;
     text-align: center;
     flex: 1;
-    min-width: 100px;
+    min-width: clamp(100px, 30%, 150px);
+    max-width: 200px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 .forecast-card img {
-    width: 50px;
-    height: 50px;
+    width: clamp(40px, 10vw, 50px);
+    height: clamp(40px, 10vw, 50px);
 }
 
 /* 🌰 Loader */
@@ -229,6 +263,7 @@ body.dark-mode .error-message {
     width: 40px;
     height: 40px;
     animation: spin 1s linear infinite;
+    margin: 1rem auto;
 }
 
 /* 🍂 Animations */
@@ -245,87 +280,194 @@ body.dark-mode .error-message {
 /* 🚫 Error Message */
 .error-message {
     color: #c62828;
-    font-size: 16px;
+    font-size: clamp(14px, 3.5vw, 16px);
     text-align: center;
-    background: rgba(198, 40, 40, 0.1);
-    padding: 10px;
+    background: rgba(198, 40, 40, 0.2);
+    padding: 0.75rem;
     border-radius: 5px;
+    margin: 1rem 0;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
 }
 
 /* 📊 Chart */
 #temp-chart {
-    max-height: 200px;
-    margin: 20px auto;
+    max-height: 250px;
+    margin: 1.5rem auto;
     width: 100%;
+    max-width: 600px;
+    background: rgba(215, 204, 200, 0.1);
+    border-radius: 15px;
+    padding: 1rem;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
-body.dark-mode canvas {
-    background: rgba(93, 64, 55, 0.3);
-    border-radius: 8px;
+body.dark-mode #temp-chart {
+    background: rgba(80, 80, 80, 0.2);
 }
 
 /* 📱 Responsive Design */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 480px) {
+    body {
+        justify-content: flex-start;
+        padding-top: 1rem;
+    }
+
     .mainheader {
-        font-size: 40px;
+        font-size: clamp(28px, 7vw, 36px);
+        margin: 1rem 0;
+    }
+
+    .inputform {
+        width: 90vw;
+        gap: 0.75rem;
     }
 
     .citysearch {
-        font-size: 16px;
-        padding: 6px;
+        font-size: clamp(14px, 4vw, 16px);
+        padding: 0.5rem;
     }
 
     .btncity, .theme-toggle {
-        font-size: 14px;
-        padding: 8px 15px;
+        font-size: clamp(12px, 3.5vw, 14px);
+        padding: 0.6rem 1rem;
+        min-width: 100px;
     }
 
     .weatheroutput {
-        width: 95vw;
+        width: 90vw;
     }
 
     .weathercardheader {
-        font-size: 20px;
+        font-size: clamp(18px, 5vw, 20px);
+    }
+
+    .weathercardbody {
+        padding: 1rem;
     }
 
     .tempbox {
-        font-size: 16px;
+        font-size: clamp(14px, 4vw, 16px);
     }
 
     .forecast {
         flex-direction: column;
         align-items: center;
+        gap: 0.75rem;
+    }
+
+    .forecast-card {
+        min-width: 100%;
+        max-width: none;
+    }
+
+    #temp-chart {
+        max-height: 200px;
     }
 }
 
-@media screen and (min-width: 601px) and (max-width: 1024px) {
+@media screen and (min-width: 481px) and (max-width: 768px) {
     .mainheader {
-        font-size: 45px;
+        font-size: clamp(36px, 7vw, 42px);
+    }
+
+    .inputform {
+        width: 80vw;
     }
 
     .citysearch {
-        font-size: 18px;
+        font-size: clamp(16px, 4vw, 18px);
     }
 
     .weatheroutput {
-        width: 50vw;
+        width: 80vw;
     }
 
     .weathercardheader {
-        font-size: 25px;
+        font-size: clamp(20px, 5vw, 22px);
     }
 
-    .tempbox {
-        font-size: 18px;
+    .forecast {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .forecast-card {
+        min-width: 120px;
+    }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .mainheader {
+        font-size: clamp(40px, 6vw, 48px);
+    }
+
+    .inputform {
+        width: 70vw;
+    }
+
+    .weatheroutput {
+        width: 60vw;
+    }
+
+    .forecast-card {
+        min-width: 140px;
     }
 }
 
 @media screen and (min-width: 1025px) {
     .mainheader {
-        font-size: 55px;
+        font-size: clamp(48px, 5vw, 55px);
+    }
+
+    .inputform {
+        width: 50vw;
     }
 
     .weatheroutput {
-        width: 30vw;
+        width: 40vw;
+    }
+
+    .forecast-card {
+        min-width: 150px;
+    }
+}
+
+/* Handle landscape orientation on small devices */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+    body {
+        justify-content: center;
+        padding: 0.5rem;
+    }
+
+    .mainheader {
+        font-size: clamp(24px, 6vw, 32px);
+        margin: 0.5rem 0;
+    }
+
+    .inputform {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+
+    .citysearch {
+        width: 60%;
+        font-size: clamp(14px, 3vw, 16px);
+    }
+
+    .weatheroutput {
+        width: 90vw;
+    }
+
+    .forecast {
+        flex-direction: row;
+        gap: 0.5rem;
+    }
+
+    .forecast-card {
+        min-width: 80px;
     }
 }

@@ -200,7 +200,7 @@ let backgroundUrl = '/assets/main light bg.png';
 if (conditionLower.includes('sunny') || conditionLower.includes('clear')) {
 backgroundUrl = '/assets/sunny.jpg';
 } 
-else if (conditionLower.includes('cloud') || conditionLower.includes('overcast')) {
+else if (conditionLower.includes('cloud') || conditionLower.includes('overcast') || conditionLower.includes('mist'))  {
 backgroundUrl = '/assets/cloud.jpg';
 } 
 else if (conditionLower.includes('rain') || conditionLower.includes('shower') ||
